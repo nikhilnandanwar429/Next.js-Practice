@@ -9,18 +9,18 @@ export default function LoginPage() {
   const router = useRouter();
   const [user, setUser] = useState({
     email: "",
-    password: "",    
+    password: "",
   });
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if(user.email.length > 0 && user.password.length > 0){
+    if (user.email.length > 0 && user.password.length > 0) {
       setButtonDisabled(false);
-    }else{
+    } else {
       setButtonDisabled(true);
     }
-  },[user])
+  }, [user]);
 
   const onLogin = async () => {
     try {
@@ -29,18 +29,16 @@ export default function LoginPage() {
       // console.log("Login Success " ,response.data);
       toast.success("Login Succcess");
       router.push("/profile");
-      
     } catch (error: any) {
       // console.log("Login Failed ", error.message);
       toast.error(error.message);
-      
-    }finally{
+    } finally {
       setLoading(false);
     }
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>Hello {loading ? "Processing..." :  "Login"}</h1>
+      <h1>Hello {loading ? "Processing..." : "Login"}</h1>
 
       <label htmlFor="email">email</label>
       <input
@@ -50,7 +48,6 @@ export default function LoginPage() {
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         placeholder="email"
         className=" p-2 m-2 text-black rounded-lg"
-
       />
       <label htmlFor="password">password</label>
       <input
@@ -60,9 +57,11 @@ export default function LoginPage() {
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="password"
         className=" p-2 m-2 text-black rounded-lg"
-
       />
-      <button className="bg-orange-500 p-2 px-4 text-black rounded-lg" onClick={onLogin}>
+      <button
+        className="bg-orange-500 p-2 px-4 text-black rounded-lg"
+        onClick={onLogin}
+      >
         Login Here
       </button>
       <Link href="/forgotpassword">forgot password</Link>

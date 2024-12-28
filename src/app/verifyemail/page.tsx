@@ -15,16 +15,15 @@ export default function VerifyEmailPage() {
 
   const onResetPassword = async () => {
     try {
-      await axios.post('/api/users/resetpassword',{token, password} );
+      await axios.post("/api/users/resetpassword", { token, password });
       // console.log("reset password success");
-      
-      router.push('/login');
+
+      router.push("/login");
     } catch (error: any) {
       setError(true);
       // console.log("ERROR in OnResetPassword page : ", error.message);
-      
     }
-  }
+  };
 
   const verifyUserEmail = async () => {
     try {
@@ -85,7 +84,7 @@ export default function VerifyEmailPage() {
             className="bg-orange-500 p-2 px-4 text-black rounded-lg"
             onClick={onResetPassword}
           >
-             Reset password
+            Reset password
           </button>
         </>
       )}

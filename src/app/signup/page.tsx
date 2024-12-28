@@ -17,27 +17,29 @@ export default function SignupPage() {
 
   const onSignup = async () => {
     try {
-        setLoading(true);
-        const response = await axios.post("/api/users/signup", user);
-        // console.log("Signup Success ",response.data );
-        router.push("/login");
-        
+      setLoading(true);
+      const response = await axios.post("/api/users/signup", user);
+      // console.log("Signup Success ",response.data );
+      router.push("/login");
     } catch (error: any) {
-        // console.log("Signup Failed ", error.message);
-        toast.error(error.message);
-    }
-    finally{
-        setLoading(false);
+      // console.log("Signup Failed ", error.message);
+      toast.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0){
-        setButtonDisabled(false);
-    }else{
-        setButtonDisabled(true);
+    if (
+      user.email.length > 0 &&
+      user.password.length > 0 &&
+      user.username.length > 0
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
     }
-  },[user])
+  }, [user]);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -67,9 +69,12 @@ export default function SignupPage() {
         value={user.password}
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="password"
-        className=" p-2 m-2 text-black rounded-lg" 
+        className=" p-2 m-2 text-black rounded-lg"
       />
-      <button className="bg-orange-500 p-2 px-4 text-black rounded-lg" onClick={onSignup}>
+      <button
+        className="bg-orange-500 p-2 px-4 text-black rounded-lg"
+        onClick={onSignup}
+      >
         {buttonDisabled ? "No Signup" : "Signup"}
       </button>
       <Link href="/login">visit login</Link>

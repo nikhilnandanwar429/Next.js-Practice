@@ -10,7 +10,6 @@ export default function ProfilePage() {
   const router = useRouter();
   const [data, setData] = useState("nothing");
 
-
   const logout = async () => {
     try {
       await axios.get("/api/users/logout");
@@ -32,9 +31,13 @@ export default function ProfilePage() {
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1>Profile page</h1>
       <p>Profile Page</p>
-      <h2 className="p-3 bg-green-500 rounded-lg m-2 text-black">{data === "nothing" ? "Nothing" : <Link href={`/profile/${data}`}>
-      {data}
-      </Link>}</h2>
+      <h2 className="p-3 bg-green-500 rounded-lg m-2 text-black">
+        {data === "nothing" ? (
+          "Nothing"
+        ) : (
+          <Link href={`/profile/${data}`}>{data}</Link>
+        )}
+      </h2>
       <button
         onClick={logout}
         className="bg-orange-500 p-2 px-4 text-black rounded-lg m-2"
