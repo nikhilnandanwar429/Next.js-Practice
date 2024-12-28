@@ -20,7 +20,7 @@ export default function Home() {
           </Link>
         </header>
         <Image
-          className="dark:invert m-4"
+          className="dark:invert"
           src="/next.svg"
           alt="Next.js logo"
           width={180}
@@ -30,7 +30,7 @@ export default function Home() {
         <div className="w-full flex flex-col md:flex-row items-center justify-evenly m-4">
           <div className="bg-white h-auto w-60 flex flex-col items-center justify-center rounded-lg text-black m-4">
             <p className="text-xl">Developed By</p>
-            <img
+            <Image
               src="https://github.com/nikhilnandanwar429.png"
               alt="github avater"
               className="p-2 rounded-2xl"
@@ -84,7 +84,7 @@ export default function Home() {
           </div>
           <div className="bg-white h-auto w-60 flex flex-col items-center justify-center rounded-lg text-black m-4">
             <p className="text-xl">Taught By</p>
-            <img
+            <Image
               src="https://github.com/hiteshchoudhary.png"
               alt="github avater"
               className="p-2 rounded-2xl"
