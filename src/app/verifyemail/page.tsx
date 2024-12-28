@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 export default function VerifyEmailPage() {
   const [verified, setVerified] = useState(false);
-  const [error, setError] = useState(false);
+  const [errorHai, setErrorHai] = useState(false);
   const [urlType, setUrlType] = useState("");
   const [token, setToken] = useState("");
   const [password, setPassword] = useState("");
@@ -20,7 +20,7 @@ export default function VerifyEmailPage() {
 
       router.push("/login");
     } catch (error: any) {
-      setError(true);
+      setErrorHai(true);
       // console.log("ERROR in OnResetPassword page : ", error.message);
     }
   };
@@ -33,7 +33,7 @@ export default function VerifyEmailPage() {
       await axios.post("/api/users/verifyemail", { token, urlType });
       setVerified(true);
     } catch (error: any) {
-      setError(true);
+      setErrorHai(true);
       // console.log("ERRoR from verify email client ", error.response.data);
     }
   };
@@ -94,10 +94,10 @@ export default function VerifyEmailPage() {
           <Link href="/login">Login</Link>
         </div>
       )}
-      {error && (
+      {errorHai && (
         <div>
           <h2 className=" m-2 text-2xl p-2 bg-red-500 text-black rounded-lg">
-            Error {error}
+            Error {errorHai}
           </h2>
         </div>
       )}

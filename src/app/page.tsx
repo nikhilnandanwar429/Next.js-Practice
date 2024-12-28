@@ -30,11 +30,14 @@ export default function Home() {
         <div className="w-full flex flex-col md:flex-row items-center justify-evenly m-4">
           <div className="bg-white h-auto w-60 flex flex-col items-center justify-center rounded-lg text-black m-4">
             <p className="text-xl">Developed By</p>
-            <Image
+            <img
               src="https://github.com/nikhilnandanwar429.png"
               alt="github avater"
-              className="p-2 rounded-2xl"
+              width={180}
+              height={180}
+              className="w-full h-auto p-2 rounded-2xl"
             />
+            
             <ul className="flex justify-evenly">
               <li className="mx-2 mb-2">
                 <Link
@@ -84,7 +87,7 @@ export default function Home() {
           </div>
           <div className="bg-white h-auto w-60 flex flex-col items-center justify-center rounded-lg text-black m-4">
             <p className="text-xl">Taught By</p>
-            <Image
+            <img
               src="https://github.com/hiteshchoudhary.png"
               alt="github avater"
               className="p-2 rounded-2xl"
