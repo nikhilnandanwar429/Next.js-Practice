@@ -3,6 +3,7 @@ import { sendEmail } from "@/helpers/mailer";
 import User from "@/models/userModel";
 import bcryptjs from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
+import toast from "react-hot-toast";
 
 connect();
 
@@ -11,16 +12,17 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { username, email, password } = reqBody;
 
-    // console.log(reqBody);
+    console.log(reqBody);
 
     //check if user already exists
     const user = await User.findOne({ email });
     if (user) {
       return NextResponse.json(
-        { error: "User Already Exists" },
-        { status: 400 }
+        { message: "User Already Exists" },
+        {status: 500}
       );
     }
+console.log("Hello before hash");
 
     //hash password
     const salt = await bcryptjs.genSalt(10);
@@ -31,10 +33,12 @@ export async function POST(request: NextRequest) {
       email,
       password: hashedPassword,
     });
+    
+    
+    // console.log("Hello after save ",newUser);
 
     const savedUser = await newUser.save();
-    // console.log(savedUser);
-
+    console.log(savedUser);
     //send  verification email
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
 
