@@ -41,34 +41,44 @@ export default function SignupPage() {
 		}
 	}, [user]);
 
+	const keyEventHandler = (e: any) => {
+		console.log("Key Pressed : ", e.key);
+		if (e.key === "Enter") {
+			onSignup();
+		}
+	
+	  }
+	
+
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen py-2">
-			<h1>Hello {loading ? "Processing ..." : "Signup"}</h1>
-			<label htmlFor="username">username</label>
+			<div className="flex flex-col items-center border p-4 rounded-xl " onKeyDown={keyEventHandler}>
+			<h1 className="text-3xl mb-4">{loading ? "Processing ..." : "Signup"}</h1>
+			{/* <label htmlFor="username">Username</label> */}
 			<input
 				type="text"
 				id="username"
 				value={user.username}
 				onChange={(e) => setUser({ ...user, username: e.target.value })}
-				placeholder="username"
+				placeholder="Username"
 				className=" p-2 m-2 text-black rounded-lg"
 			/>
-			<label htmlFor="email">email</label>
+			{/* <label htmlFor="email">Email</label> */}
 			<input
 				type="email"
 				id="email"
 				value={user.email}
 				onChange={(e) => setUser({ ...user, email: e.target.value })}
-				placeholder="email"
+				placeholder="Email"
 				className=" p-2 m-2 text-black rounded-lg"
 			/>
-			<label htmlFor="password">password</label>
+			{/* <label htmlFor="password">Password</label> */}
 			<input
 				type="password"
 				id="password"
 				value={user.password}
 				onChange={(e) => setUser({ ...user, password: e.target.value })}
-				placeholder="password"
+				placeholder="Password"
 				className=" p-2 m-2 text-black rounded-lg"
 			/>
 			<button
@@ -77,7 +87,8 @@ export default function SignupPage() {
 			>
 				{buttonDisabled ? "No Signup" : "Signup"}
 			</button>
-			<Link href="/login">visit login</Link>
+			<Link href="/login" className="my-2">visit login</Link>
+			</div>
 		</div>
 	);
 }

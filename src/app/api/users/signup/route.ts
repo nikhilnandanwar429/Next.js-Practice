@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
     const { username, email, password } = reqBody;
 
-    console.log(reqBody);
+    // console.log(reqBody);
 
     //check if user already exists
     const user = await User.findOne({ email });
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
         {status: 500}
       );
     }
-console.log("Hello before hash");
+// console.log("Hello before hash");
 
     //hash password
     const salt = await bcryptjs.genSalt(10);
@@ -38,7 +38,7 @@ console.log("Hello before hash");
     // console.log("Hello after save ",newUser);
 
     const savedUser = await newUser.save();
-    console.log(savedUser);
+    // console.log(savedUser);
     //send  verification email
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
 

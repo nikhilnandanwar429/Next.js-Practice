@@ -36,36 +36,54 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>Hello {loading ? "Processing..." : "Login"}</h1>
 
-      <label htmlFor="email">email</label>
-      <input
-        type="email"
-        id="email"
-        value={user.email}
-        onChange={(e) => setUser({ ...user, email: e.target.value })}
-        placeholder="email"
-        className=" p-2 m-2 text-black rounded-lg"
-      />
-      <label htmlFor="password">password</label>
-      <input
-        type="password"
-        id="password"
-        value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
-        placeholder="password"
-        className=" p-2 m-2 text-black rounded-lg"
-      />
-      <button
-        className="bg-orange-500 p-2 px-4 text-black rounded-lg"
-        onClick={onLogin}
+  const keyEventHandler = (e: any) => {
+    console.log("Key Pressed : ", e.key);
+    if (e.key === "Enter") {
+      onLogin();
+    }
+
+  }
+
+  return (
+    <div className="flex items-center justify-center min-h-screen py-2 ">
+      <div
+        onKeyDown={keyEventHandler}
+        className="flex flex-col items-center border p-4 rounded-xl"
       >
-        Login Here
-      </button>
-      <Link href="/forgotpassword">forgot password</Link>
-      <Link href="/signup">visit signup</Link>
+        <h1 className="text-3xl mb-4"> {loading ? "Processing..." : "Login"}</h1>
+
+        {/* <label htmlFor="email">Email</label> */}
+        <input
+          type="email"
+          id="email"
+          value={user.email}
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          placeholder="Email"
+          className=" p-2 m-2 text-black rounded-lg"
+        />
+        {/* <label htmlFor="password">Password</label> */}
+        <input
+          type="password"
+          id="password"
+          value={user.password}
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          placeholder="Password"
+          className=" p-2 m-2 text-black rounded-lg"
+        />
+        <button
+
+          className="bg-orange-500 p-2 px-4 text-black rounded-lg"
+          onClick={onLogin}
+        >
+          Login Here
+        </button>
+        <Link 
+        href="/forgotpassword"
+        className="my-2"
+        >forgot password</Link>
+        <Link href="/signup">visit signup</Link>
+      </div>
     </div>
   );
 }

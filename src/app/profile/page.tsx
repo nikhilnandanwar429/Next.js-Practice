@@ -30,7 +30,7 @@ export default function ProfilePage() {
 	return (
 		<div className="flex flex-col items-center justify-center min-h-screen py-2">
 			<h1>Profile page</h1>
-			<p>Profile Page</p>
+			
 			<h2 className="p-3 bg-green-500 rounded-lg m-2 text-black">
 				{data === "nothing" ? (
 					"Nothing"
