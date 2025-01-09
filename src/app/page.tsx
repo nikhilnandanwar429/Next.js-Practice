@@ -172,8 +172,8 @@ export default function Home() {
 								target="_blank"
 							>
 								Hitesh Choudhary Sir
-							</Link>{" "}
-						</u>
+							</Link>
+						</u>{" "}
 						for his amazing Next.js tutorials and guidance!
 					</p>
 				</div>
